@@ -1,0 +1,6 @@
+peer chaincode install -p chaincodedev/chaincode/sacc -n mycc -v 1
+peer chaincode instantiate -n mycc -v 0 -c '{"Args":["user1","10"]}' -C myc
+
+# 초기값: user1, 100
+peer chaincode invoke -n mycc -C myc -c '{"Args":["set", "user1", "200"]}'
+peer chaincode query -n mycc -C myc -c '{"Args":["query", "user1"]}'
